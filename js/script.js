@@ -1,21 +1,3 @@
-/*
-    SOLUZIONE creare una griglia 10x10;
-    1 - aggiungere in html un bottone che permette all'utente di generare la griglia.
-    2 - aggiungere lo scheletro della griglia in html
-    3 - generare la griglia
-        3.1 - creare una funzione che genera le celle createCell()
-            3.1.1 - inizializziamo una costane a cui assegnamo la creazione dell'elemento div.
-            3.1.2 - Alla costante aggiungiamo una classe (dove andiamo a definire le css i parametri della cella).
-            3.1.3 - come return abbiamo la costante.
-        3.2 - creare una funzione che aggiunge le celle nella griglia generateGrid(numCell, element)
-            3.2.1 - ciclo for (let i=0; i<numCell; i++)
-                3.2.2 - inizializziamo una variabile a cui assegnamo la funzione createCell();
-                3.2.3 - a element applichiamo la funzione appendChild(variabile) per creare la cella;
-    4 - inizializziamo una costante a cui assegnamo l'elemento html che deve contenere la griglia.
-    5 - Chiamiamo la funzione per creare la griglia e gli passiamo il numero di celle e la variabile creata prima
-        generateGrid(100, variabile);
-*/
-
 //funzione per creare la cella 
 function createCell() {
     //aggiungiamo uun div con classe "cell" nell'html
@@ -26,25 +8,33 @@ function createCell() {
 }
 
 //funzione che crea la griglia
-function generateGrid(CellforRow, element) {
+function generateGrid(CellforRow, container) {
     //creiamo  l'elemento griglia
     const content = document.createElement('div');
-    content.classList.add('content-grid');
+    content.classList.add('content-grid'); 
 
     //calcoliamo che la griglia deve essere un quadrato di n * n
-    let numCell = CellforRow * CellforRow;
-    for (let i = 0; i < numCell; i++) {
+    let cellLength = CellforRow * CellforRow;
+    for (let i = 0; i < cellLength; i++) {
         //creiamo la cella
         let cell = createCell();
         //la aggiungiamo a element
-        cell.innerText = i+1;
+        let numCell = i+1;
+        cell.innerText = numCell;
 
-        content.innerHTML = cell;
+        //bonus click
+        cell.addEventListener('click', function(){
+            this.classList.toggle('clicked');
+            console.log(`Hai clicatto la casella ${numCell}`);
+        });
+
+        content.appendChild(cell);
     }
     //caclolare la dimensione della width della griglia
     content.style.setProperty('width', `calc(100px * ${CellforRow})`);
     //aggiungiamo la griglia creata al div grid
-    element.appendChild(content);
+    container.appendChild(content);
+    console.log(content);
 }
 
 const grid = document.getElementById('grid');
@@ -76,5 +66,6 @@ paly.addEventListener('click', function(){
             //di defoult è facile
             cell_row = 10;
     }
+    grid.innerHTML="";
     generateGrid(cell_row, grid);
 });
