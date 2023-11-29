@@ -27,23 +27,23 @@ function createCell() {
 
 //funzione che crea la griglia
 function generateGrid(CellforRow, element) {
+    //creiamo  l'elemento griglia
+    const content = document.createElement('div');
+    content.classList.add('content-grid');
+
     //calcoliamo che la griglia deve essere un quadrato di n * n
-    //dove n è dato dal numero di celle per riga
     let numCell = CellforRow * CellforRow;
-    //inizializziamo un for di scrittura
     for (let i = 0; i < numCell; i++) {
         //creiamo la cella
         let cell = createCell();
         //la aggiungiamo a element
         cell.innerText = i+1;
-        element.appendChild(cell);
+        content.appendChild(cell);
     }
-    /*    -----  PROBLEMA  ------- */
     //caclolare la dimensione della width della griglia
-    element.style.setProperty('width', `calc(100px * ${CellforRow})`);
-    element.style.setProperty('height', `calc(100px * ${CellforRow})`);
-    /* --------------------------- */
-
+    content.style.setProperty('width', `calc(100px * ${CellforRow})`);
+    //aggiungiamo la griglia creata al div grid
+    element.appendChild(content);
 }
 
 const grid = document.getElementById('grid');
@@ -52,7 +52,6 @@ const paly = document.getElementById('play');
 
 paly.addEventListener('click', function(){
     //quando clicchiamo su play si deve creare la griglia
-    grid.innerHTML = "";
     const select = document.getElementById('difficulty');
     let difficulty = select.value;
     let cell_row = 0;
@@ -76,5 +75,6 @@ paly.addEventListener('click', function(){
             //di defoult è facile
             cell_row = 10;
     }
+    grid.innerHTML="";
     generateGrid(cell_row, grid);
 });
