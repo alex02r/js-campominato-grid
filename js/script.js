@@ -38,7 +38,8 @@ function generateGrid(CellforRow, element) {
         let cell = createCell();
         //la aggiungiamo a element
         cell.innerText = i+1;
-        content.appendChild(cell);
+
+        content.innerHTML = cell;
     }
     //caclolare la dimensione della width della griglia
     content.style.setProperty('width', `calc(100px * ${CellforRow})`);
@@ -75,6 +76,5 @@ paly.addEventListener('click', function(){
             //di defoult è facile
             cell_row = 10;
     }
-    grid.innerHTML="";
     generateGrid(cell_row, grid);
 });
