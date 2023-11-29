@@ -40,8 +40,7 @@ function generateGrid(CellforRow, element) {
     }
     /*    -----  PROBLEMA  ------- */
     //caclolare la dimensione della width della griglia
-    let width_calc = `"calc(100px * ${CellforRow})"`;
-    element.style.width = width_calc;
+    element.style.setProperty('width', `calc(100px * ${CellforRow})`);;
     /* --------------------------- */
 
 }
