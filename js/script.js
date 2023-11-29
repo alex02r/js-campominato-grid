@@ -25,3 +25,13 @@ function createCell() {
     return elemento;
 }
 
+//funzione che crea la griglia
+function generateGrid(numCell, element) {
+    //inizializziamo un for di scrittura
+    for (let i = 0; i < numCell; i++) {
+        //creiamo la cella
+        let cell = createCell();
+        //la aggiungiamo a element
+        element.appendChild(cell);
+    }
+}
