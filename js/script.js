@@ -26,14 +26,24 @@ function createCell() {
 }
 
 //funzione che crea la griglia
-function generateGrid(numCell, element) {
+function generateGrid(CellforRow, element) {
+    //calcoliamo che la griglia deve essere un quadrato di n * n
+    //dove n è dato dal numero di celle per riga
+    let numCell = CellforRow * CellforRow;
     //inizializziamo un for di scrittura
     for (let i = 0; i < numCell; i++) {
         //creiamo la cella
         let cell = createCell();
         //la aggiungiamo a element
+        cell.innerText = i+1;
         element.appendChild(cell);
     }
+    /*    -----  PROBLEMA  ------- */
+    //caclolare la dimensione della width della griglia
+    let width_calc = `"calc(100px * ${CellforRow})"`;
+    element.style.width = width_calc;
+    /* --------------------------- */
+
 }
 
 const grid = document.getElementById('grid');
@@ -42,5 +52,5 @@ const paly = document.getElementById('play');
 
 paly.addEventListener('click', function(){
     //quando clicchiamo su play si deve creare la griglia
-    generateGrid(100, grid);
+    generateGrid(10, grid);
 })
