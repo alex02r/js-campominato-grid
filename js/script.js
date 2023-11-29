@@ -15,3 +15,13 @@
     5 - Chiamiamo la funzione per creare la griglia e gli passiamo il numero di celle e la variabile creata prima
         generateGrid(100, variabile);
 */
+
+//funzione per creare la cella 
+function createCell() {
+    //aggiungiamo uun div con classe "cell" nell'html
+    const elemento = document.createElement('div');
+    elemento.classList.add('cell');
+
+    return elemento;
+}
+
