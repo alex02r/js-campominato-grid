@@ -35,3 +35,12 @@ function generateGrid(numCell, element) {
         element.appendChild(cell);
     }
 }
+
+const grid = document.getElementById('grid');
+//chiamiamo la funzione per creare la griglia
+const paly = document.getElementById('play');
+
+paly.addEventListener('click', function(){
+    //quando clicchiamo su play si deve creare la griglia
+    generateGrid(100, grid);
+})
