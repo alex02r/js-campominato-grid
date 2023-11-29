@@ -40,7 +40,8 @@ function generateGrid(CellforRow, element) {
     }
     /*    -----  PROBLEMA  ------- */
     //caclolare la dimensione della width della griglia
-    element.style.setProperty('width', `calc(100px * ${CellforRow})`);;
+    element.style.setProperty('width', `calc(100px * ${CellforRow})`);
+    element.style.setProperty('height', `calc(100px * ${CellforRow})`);
     /* --------------------------- */
 
 }
@@ -51,5 +52,29 @@ const paly = document.getElementById('play');
 
 paly.addEventListener('click', function(){
     //quando clicchiamo su play si deve creare la griglia
-    generateGrid(10, grid);
-})
+    grid.innerHTML = "";
+    const select = document.getElementById('difficulty');
+    let difficulty = select.value;
+    let cell_row = 0;
+    switch (difficulty) {
+        case "1":
+            //difficoltà facile
+            //10 caselle per 10 righe
+            cell_row = 10;
+            break;
+        case "2":
+            //difficoltà normale
+            //9 caselle per 9 righe
+            cell_row = 9;
+            break;
+        case "3":
+            //difficoltà facile
+            //7 caselle per 7 righe
+            cell_row = 7;
+            break;
+        default:
+            //di defoult è facile
+            cell_row = 10;
+    }
+    generateGrid(cell_row, grid);
+});
