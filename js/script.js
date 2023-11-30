@@ -9,6 +9,7 @@ function createCell() {
 
 //funzione che crea la griglia
 function generateGrid(CellforRow, container) {
+    container.innerHTML="";
     //creiamo  l'elemento griglia
     const content = document.createElement('div');
     content.classList.add('content-grid'); 
@@ -66,6 +67,5 @@ paly.addEventListener('click', function(){
             //di defoult è facile
             cell_row = 10;
     }
-    grid.innerHTML="";
     generateGrid(cell_row, grid);
 });
